@@ -1,0 +1,19 @@
+from bisect import bisect_left, bisect_right
+a = int(input())
+mas = list(map(int, input().split()))
+mas.sort()
+prefix = []
+total = 0
+for x in mas:
+  total += x
+  prefix.append(total)
+f = int(input())
+for i in range(f):
+  d = int(input())
+  pos= bisect_right(mas, d)
+
+  if pos == 0:
+    total = 0
+  else:
+    total = prefix[pos -1]
+  print(pos, total)
